@@ -9,7 +9,7 @@ on:
 
 jobs:
   sync:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -17,8 +17,9 @@ jobs:
 
       - name: Sync files
         run: |
+          git config --global user.email "zjxprograms2010@163.com"
           git config --global user.name "DGBlocksLite"
-          curl -o file.txt https://raw.githubusercontent.com/DGBlocksLite/HWIDCheck/main/hwidcheck.txt
+          curl -o hwidcheck.txt https://raw.githubusercontent.com/DGBlocksLite/HWIDCheck/main/hwidcheck.txt
           git add hwidcheck.txt
           git commit -m "Sync hwidcheck.txt from raw.githubusercontent.com"
           git push
