@@ -17,6 +17,8 @@ jobs:
 
       - name: Sync files
         run: |
+          git config --global user.email "zjxprograms2010@qq.com"
+          git config --global user.name "DGBlocksLite"
           curl -o file.txt https://raw.githubusercontent.com/DGBlocksLite/HWIDCheck/main/hwidcheck.txt
           git add hwidcheck.txt
           git commit -m "Sync hwidcheck.txt from raw.githubusercontent.com"
