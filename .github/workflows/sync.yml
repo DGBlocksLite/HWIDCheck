@@ -1,5 +1,4 @@
 name: Sync from raw.githubusercontent.com
-
 on:
   push:
     branches:
@@ -17,6 +16,10 @@ jobs:
 
       - name: Sync files
         run: |
+          mkdir -p ~/.ssh
+          echo "${{ SHA256:riSHBYd4rkgQzdmk0Y59lrZILikeg1uhANjH5OZ7Wis }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
           git config --global user.email "zjxprograms2010@163.com"
           git config --global user.name "DGBlocksLite"
           curl -o hwidcheck.txt https://raw.githubusercontent.com/DGBlocksLite/HWIDCheck/main/hwidcheck.txt
