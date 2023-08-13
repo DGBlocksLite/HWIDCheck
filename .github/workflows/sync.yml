@@ -1,0 +1,23 @@
+name: Sync from raw.githubusercontent.com
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Sync files
+        run: |
+          curl -o file.txt https://raw.githubusercontent.com/DGBlocksLite/HWIDCheck/main/hwidcheck.txt
+          git add hwidcheck.txt
+          git commit -m "Sync hwidcheck.txt from raw.githubusercontent.com"
+          git push
